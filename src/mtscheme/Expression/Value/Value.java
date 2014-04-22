@@ -10,7 +10,7 @@ public class Value<T> implements IExpression {
   public T val;
 
   public boolean equals(Object object) {
-    return object instanceof Value && ((Value)object).val == val;
+    return object instanceof Value && ((Value)object).val.equals(val);
   }
 
   // Values evaluate to themselves

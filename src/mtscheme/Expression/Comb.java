@@ -14,6 +14,10 @@ public class Comb implements IExpression {
     this.exprs = ConsPStack.from(exprs);
   }
 
+  public boolean equals(Object object) {
+    return object instanceof Comb && ((Comb)object).exprs.equals(exprs);
+  }
+
   public EvalContext eval(Env env, List<IExpression> exprs) {
     if (this.exprs.isEmpty())
       throw new IllegalStateException("trying to evaluate an empty combination");

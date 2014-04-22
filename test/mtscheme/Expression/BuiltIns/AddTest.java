@@ -1,10 +1,7 @@
 package mtscheme.Expression.BuiltIns;
 
 import mtscheme.Environment.Env;
-import mtscheme.Expression.Comb;
 import mtscheme.Expression.EvalContext;
-import mtscheme.Expression.IExpression;
-import mtscheme.Expression.Null;
 import mtscheme.Expression.Value.Num;
 import org.junit.Assert;
 import org.junit.Test;

@@ -5,7 +5,6 @@ import mtscheme.Expression.BuiltIns.Add;
 import mtscheme.Expression.Value.Num;
 import org.junit.Assert;
 import org.junit.Test;
-import org.pcollections.ConsPStack;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
