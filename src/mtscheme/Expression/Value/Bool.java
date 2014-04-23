@@ -1,6 +1,5 @@
 package mtscheme.Expression.Value;
 
 public class Bool extends Value<Boolean> {
-
-  public Bool(Boolean val) { this.val = val; }
+  public Bool(boolean val) { this.val = val; }
 }

@@ -1,7 +1,6 @@
 package mtscheme.Parser;
 
 import mtscheme.Expression.Comb;
-import mtscheme.Expression.IExpression;
 import mtscheme.Expression.Symbol;
 import mtscheme.Expression.Value.Num;
 import org.junit.Assert;
@@ -9,7 +8,6 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.List;
 
 public class ParserTest {
   @Test

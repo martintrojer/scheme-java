@@ -1,12 +1,10 @@
 package mtscheme.Expression;
 
 import mtscheme.Env;
-import mtscheme.Expression.BuiltIns.AritFun;
 import mtscheme.Expression.BuiltIns.IProc;
 import org.pcollections.ConsPStack;
 import org.pcollections.PStack;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Comb implements IExpression {

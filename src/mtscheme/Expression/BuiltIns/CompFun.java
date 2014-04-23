@@ -3,34 +3,34 @@ package mtscheme.Expression.BuiltIns;
 import mtscheme.Env;
 import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
-import mtscheme.Expression.Value.Num;
+import mtscheme.Expression.Value.Bool;
+import mtscheme.Expression.Value.Value;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AritFun implements IExpression, IProc {
+public abstract class CompFun implements IExpression, IProc {
 
   // functional interface, to hold a reference to the lambda
-  interface AritFn {
-    BigDecimal invoke(BigDecimal a, BigDecimal b);
+  interface CmpFn {
+    boolean invoke(Value a, Value b);
   }
 
-  private AritFn fn;
+  private CmpFn fn;
 
-  public AritFun(AritFn fn) {
+  public CompFun(CmpFn fn) {
     this.fn = fn;
   }
 
   public EvalContext eval(Env env, List<IExpression> exprs) {
-    List<BigDecimal> nums =
+    List<Value> nums =
             exprs.stream()
                     .map(e -> e.eval(env, Arrays.asList(e)))
-                    .map(ctx -> ((Num) ctx.expr).val)
+                    .map(ctx -> (Value) ctx.expr)
                     .collect(Collectors.toList());
-    BigDecimal head = nums.remove(0);
-    BigDecimal res = nums.stream().reduce(head, fn::invoke);
-    return new EvalContext(env, new Num(res));
+    Value head = nums.remove(0);
+    boolean res = nums.stream().allMatch(a -> fn.invoke(head, a));
+    return new EvalContext(env, new Bool(res));
   }
 }

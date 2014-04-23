@@ -6,7 +6,7 @@ import mtscheme.Expression.IExpression;
 
 import java.util.List;
 
-public class Value<T> implements IExpression {
+public abstract class Value<T> implements IExpression {
   public T val;
 
   public boolean equals(Object object) {

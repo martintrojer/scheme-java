@@ -1,9 +1,6 @@
 package mtscheme;
 
-import mtscheme.Expression.BuiltIns.Add;
-import mtscheme.Expression.BuiltIns.Div;
-import mtscheme.Expression.BuiltIns.Mul;
-import mtscheme.Expression.BuiltIns.Sub;
+import mtscheme.Expression.BuiltIns.*;
 
 public class GlobalEnv {
   public static Env globalEnv() {
@@ -11,6 +8,14 @@ public class GlobalEnv {
             .addEntry("+", new Add())
             .addEntry("-", new Sub())
             .addEntry("*", new Mul())
-            .addEntry("/", new Div());
+            .addEntry("/", new Div())
+
+            .addEntry("=", new Eq())
+            .addEntry(">", new Gt())
+            .addEntry(">=", new Ge())
+            .addEntry("<", new Lt())
+            .addEntry("<=", new Le())
+
+            .addEntry("not", new Not());
   }
 }
