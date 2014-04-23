@@ -1,4 +1,4 @@
-package mtscheme.Environment;
+package mtscheme;
 
 import mtscheme.Expression.IExpression;
 import org.pcollections.*;

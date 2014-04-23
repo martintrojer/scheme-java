@@ -1,6 +1,6 @@
 package mtscheme.Expression;
 
-import mtscheme.Environment.Env;
+import mtscheme.Env;
 import mtscheme.Expression.BuiltIns.Add;
 import mtscheme.Expression.Value.Num;
 import org.junit.Assert;
@@ -11,17 +11,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CombTest {
-  Env emptyEnv = new Env();
+  Env testEnv = new Env().addEntry("+", new Add());
   List<IExpression> noExprs = Arrays.asList(new Null());
 
   @Test
   public void testSimpleEval() throws Exception {
     EvalContext res =
           new Comb(Arrays.asList(
-            new Add(),
+            new Symbol("+"),
             new Num(BigDecimal.ONE),
             new Num(BigDecimal.TEN)))
-          .eval(emptyEnv, noExprs);
+          .eval(testEnv, noExprs);
     Assert.assertEquals(BigDecimal.valueOf(11), ((Num) res.expr).val);
   }
 
@@ -29,10 +29,10 @@ public class CombTest {
   public void testNestedEval() throws Exception {
     EvalContext res =
           new Comb(Arrays.asList(
-            new Add(),
-            new Comb(Arrays.asList(new Add(), new Num(BigDecimal.ONE), new Num(BigDecimal.ONE))),
+            new Symbol("+"),
+            new Comb(Arrays.asList(new Symbol("+"), new Num(BigDecimal.ONE), new Num(BigDecimal.ONE))),
             new Num(BigDecimal.TEN)))
-          .eval(emptyEnv, noExprs);
+          .eval(testEnv, noExprs);
     Assert.assertEquals(BigDecimal.valueOf(12), ((Num) res.expr).val);
   }
 }

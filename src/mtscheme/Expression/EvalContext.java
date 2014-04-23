@@ -1,6 +1,6 @@
 package mtscheme.Expression;
 
-import mtscheme.Environment.Env;
+import mtscheme.Env;
 
 public class EvalContext {
   public final Env env;

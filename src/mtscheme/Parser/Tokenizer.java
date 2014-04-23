@@ -1,9 +1,9 @@
 package mtscheme.Parser;
 
 import mtscheme.Expression.IExpression;
+import mtscheme.Expression.Symbol;
 import mtscheme.Expression.Value.Name;
 import mtscheme.Expression.Value.Num;
-import mtscheme.Expression.Value.Sym;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -59,13 +59,13 @@ class TSymbol extends Token {
     this.val = val;
   }
   public IExpression toExpression() {
-    return new Sym(val);
+    return new Symbol(val);
   }
 }
 
 public class Tokenizer {
 
-  static Pattern stringPat = Pattern.compile("^\"(\\w*)\"");
+  static Pattern stringPat = Pattern.compile("^\"(\\w*)\".*");
   static Pattern digitPat = Pattern.compile("^([+-]*)([\\d\\.]*).*");
   static Pattern symPat = Pattern.compile("^(\\S*).*");
 
@@ -92,7 +92,7 @@ public class Tokenizer {
       else if (strm.matches()) {
         java.lang.String str = strm.group(1);
         res.add(new TString(str));
-        src = src.substring(strm.end());
+        src = src.substring(strm.end(1) + 1);
       }
       else if (digm.matches() && !digm.group(2).isEmpty()) {
         java.lang.String str = digm.group(2);

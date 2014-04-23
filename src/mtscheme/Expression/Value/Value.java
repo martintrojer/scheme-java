@@ -1,6 +1,6 @@
 package mtscheme.Expression.Value;
 
-import mtscheme.Environment.Env;
+import mtscheme.Env;
 import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
 

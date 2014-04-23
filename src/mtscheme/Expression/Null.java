@@ -1,6 +1,6 @@
 package mtscheme.Expression;
 
-import mtscheme.Environment.Env;
+import mtscheme.Env;
 
 import java.util.List;
 

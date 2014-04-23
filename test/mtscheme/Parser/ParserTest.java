@@ -1,13 +1,15 @@
 package mtscheme.Parser;
 
 import mtscheme.Expression.Comb;
+import mtscheme.Expression.IExpression;
+import mtscheme.Expression.Symbol;
 import mtscheme.Expression.Value.Num;
-import mtscheme.Expression.Value.Sym;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 public class ParserTest {
   @Test
@@ -20,15 +22,15 @@ public class ParserTest {
     Assert.assertEquals(Parser.parse(Tokenizer.tokenize("(+ 1 2)")),
             Arrays.asList(
                     new Comb(Arrays.asList(
-                            new Sym("+"),
+                            new Symbol("+"),
                             new Num(BigDecimal.valueOf(1)),
                             new Num(BigDecimal.valueOf(2))))));
     Assert.assertEquals(Parser.parse(Tokenizer.tokenize("(+ (- 2 1) 2)")),
             Arrays.asList(
                     new Comb(Arrays.asList(
-                            new Sym("+"),
+                            new Symbol("+"),
                             new Comb(Arrays.asList(
-                                    new Sym("-"),
+                                    new Symbol("-"),
                                     new Num(BigDecimal.valueOf(2)),
                                     new Num(BigDecimal.valueOf(1)))),
                             new Num(BigDecimal.valueOf(2))))));
