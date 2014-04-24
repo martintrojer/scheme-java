@@ -19,14 +19,14 @@ public class Comb implements IExpression {
     return object instanceof Comb && ((Comb)object).exprs.equals(exprs);
   }
 
-  public EvalContext eval(Env env, List<IExpression> exprs) {
+  public EvalContext eval(Env env, IExpression... exprs) {
     if (this.exprs.isEmpty())
       throw new IllegalStateException("trying to evaluate an empty combination");
     IExpression head = this.exprs.get(0);
     List<IExpression> rest = this.exprs.minus(0);
-    EvalContext headCtx = head.eval(env, exprs);
+    EvalContext headCtx = head.eval(env);
     if (headCtx.expr instanceof IProc)
-      return headCtx.expr.eval(env, rest);
+      return headCtx.expr.eval(env, rest.toArray(new IExpression[rest.size()]));
     else
       return headCtx;
   }

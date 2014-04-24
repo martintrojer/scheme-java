@@ -1,6 +1,5 @@
 package mtscheme;
 
-import mtscheme.Env;
 import mtscheme.Expression.Null;
 import mtscheme.Expression.Value.Name;
 import mtscheme.Expression.Value.Num;

@@ -1,7 +1,10 @@
 package mtscheme;
 
 import mtscheme.Expression.IExpression;
-import org.pcollections.*;
+import org.pcollections.ConsPStack;
+import org.pcollections.HashTreePMap;
+import org.pcollections.PMap;
+import org.pcollections.PStack;
 
 import java.util.Optional;
 

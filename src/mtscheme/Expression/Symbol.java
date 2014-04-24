@@ -2,7 +2,6 @@ package mtscheme.Expression;
 
 import mtscheme.Env;
 
-import java.util.List;
 import java.util.Optional;
 
 public class Symbol implements IExpression {
@@ -16,7 +15,7 @@ public class Symbol implements IExpression {
     return object instanceof Symbol && ((Symbol)object).name.equals(name);
   }
 
-  public EvalContext eval(Env env, List<IExpression> exprs) {
+  public EvalContext eval(Env env, IExpression... exprs) {
     Optional<IExpression> val = env.lookUp(name);
     if (val.isPresent())
       return new EvalContext(env, val.get());

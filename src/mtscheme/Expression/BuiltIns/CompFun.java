@@ -10,10 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class CompFun implements IExpression, IProc {
+public class CompFun implements IExpression, IProc {
 
-  // functional interface, to hold a reference to the lambda
-  interface CmpFn {
+  public interface CmpFn {
     boolean invoke(Value a, Value b);
   }
 
@@ -23,10 +22,10 @@ public abstract class CompFun implements IExpression, IProc {
     this.fn = fn;
   }
 
-  public EvalContext eval(Env env, List<IExpression> exprs) {
+  public EvalContext eval(Env env, IExpression... exprs) {
     List<Value> nums =
-            exprs.stream()
-                    .map(e -> e.eval(env, Arrays.asList(e)))
+            Arrays.asList(exprs).stream()
+                    .map(e -> e.eval(env))
                     .map(ctx -> (Value) ctx.expr)
                     .collect(Collectors.toList());
     Value head = nums.remove(0);

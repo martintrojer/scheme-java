@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AritFun implements IExpression, IProc {
+public class AritFun implements IExpression, IProc {
 
   // functional interface, to hold a reference to the lambda
-  interface AritFn {
+  public interface AritFn {
     BigDecimal invoke(BigDecimal a, BigDecimal b);
   }
 
@@ -23,10 +23,10 @@ public abstract class AritFun implements IExpression, IProc {
     this.fn = fn;
   }
 
-  public EvalContext eval(Env env, List<IExpression> exprs) {
+  public EvalContext eval(Env env, IExpression... exprs) {
     List<BigDecimal> nums =
-            exprs.stream()
-                    .map(e -> e.eval(env, Arrays.asList(e)))
+            Arrays.asList(exprs).stream()
+                    .map(e -> e.eval(env))
                     .map(ctx -> ((Num) ctx.expr).val)
                     .collect(Collectors.toList());
     BigDecimal head = nums.remove(0);

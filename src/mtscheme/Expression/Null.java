@@ -2,15 +2,13 @@ package mtscheme.Expression;
 
 import mtscheme.Env;
 
-import java.util.List;
-
 public class Null implements IExpression {
 
   public boolean equals(Object object) {
     return object instanceof Null;
   }
 
-  public EvalContext eval (Env env, List<IExpression> exprs) {
+  public EvalContext eval (Env env, IExpression... exprs) {
     throw new IllegalStateException("trying to eval Null");
   }
 }
