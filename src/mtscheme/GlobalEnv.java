@@ -1,9 +1,6 @@
 package mtscheme;
 
-import mtscheme.Expression.BuiltIns.AritFun;
-import mtscheme.Expression.BuiltIns.CompFun;
-import mtscheme.Expression.BuiltIns.If;
-import mtscheme.Expression.BuiltIns.Not;
+import mtscheme.Expression.BuiltIns.*;
 import mtscheme.Expression.Value.Bool;
 import mtscheme.Expression.Value.Num;
 
@@ -20,7 +17,7 @@ public class GlobalEnv {
 
             .addEntry("=",  new CompFun((a, b) -> a.equals(b)))
             .addEntry(">",  new CompFun((a, b) -> ((Num) a).gt((Num) b)))
-            .addEntry(">=", new CompFun((a, b) -> ((Num)a).ge((Num)b)))
+            .addEntry(">=", new CompFun((a, b) -> ((Num) a).ge((Num) b)))
             .addEntry("<",  new CompFun((a, b) -> ((Num) a).lt((Num) b)))
             .addEntry("<=", new CompFun((a, b) -> ((Num) a).le((Num) b)))
 
@@ -28,6 +25,7 @@ public class GlobalEnv {
             .addEntry("false", new Bool(false))
 
             .addEntry("not", new Not())
-            .addEntry("if", new If());
+            .addEntry("if", new If())
+            .addEntry("cond", new Cond());
   }
 }

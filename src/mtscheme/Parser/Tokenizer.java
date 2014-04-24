@@ -2,6 +2,7 @@ package mtscheme.Parser;
 
 import mtscheme.Expression.IExpression;
 import mtscheme.Expression.Symbol;
+import mtscheme.Expression.Value.Bool;
 import mtscheme.Expression.Value.Name;
 import mtscheme.Expression.Value.Num;
 
@@ -59,7 +60,12 @@ class TSymbol extends Token {
     this.val = val;
   }
   public IExpression toExpression() {
-    return new Symbol(val);
+    if (val.equals("true"))
+      return new Bool(true);
+    else if (val.equals("false"))
+      return new Bool(false);
+    else
+      return new Symbol(val);
   }
 }
 
