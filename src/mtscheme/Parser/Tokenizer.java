@@ -71,7 +71,7 @@ class TSymbol extends Token {
 
 public class Tokenizer {
 
-  static Pattern stringPat = Pattern.compile("^\"(\\w*)\".*");
+  static Pattern stringPat = Pattern.compile("^\"(\\S*)\".*");
   static Pattern digitPat = Pattern.compile("^([+-]*)([\\d\\.]*).*");
   static Pattern symPat = Pattern.compile("^([\\S&&[^)]]*).*");
 
