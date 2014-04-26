@@ -8,6 +8,7 @@ import mtscheme.Parser.Tokenizer;
 import org.junit.Assert;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Helpers {
 
@@ -37,5 +38,12 @@ public class Helpers {
             Parser.parse(Tokenizer.tokenize(expr))
                     .get(0).eval(GlobalEnv.globalEnv());
     Assert.assertEquals(expect, ((Num)res.env.lookUp(key).get()).val);
+  }
+
+  public static void testList(String expr, List<IExpression> expect) {
+    EvalContext res =
+            Parser.parse(Tokenizer.tokenize(expr))
+            .get(0).eval(GlobalEnv.globalEnv());
+    Assert.assertEquals(expect, ((ListExpr)res.expr).exprs);
   }
 }

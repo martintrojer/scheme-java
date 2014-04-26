@@ -27,6 +27,8 @@ public class GlobalEnv {
             .addEntry("not", new Not())
             .addEntry("if", new If())
             .addEntry("cond", new Cond())
-            .addEntry("define", new Define());
+            .addEntry("define", new Define())
+
+            .addEntry("list", new ListFn());
   }
 }
