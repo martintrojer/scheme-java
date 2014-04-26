@@ -73,7 +73,7 @@ public class Tokenizer {
 
   static Pattern stringPat = Pattern.compile("^\"(\\w*)\".*");
   static Pattern digitPat = Pattern.compile("^([+-]*)([\\d\\.]*).*");
-  static Pattern symPat = Pattern.compile("^(\\S*).*");
+  static Pattern symPat = Pattern.compile("^([\\S&&[^)]]*).*");
 
   public static List<Token> tokenize(java.lang.String src) {
     List<Token> res = new ArrayList<>();
