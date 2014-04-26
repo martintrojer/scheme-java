@@ -5,10 +5,14 @@ import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
 import mtscheme.Expression.Value.Bool;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 public class Not implements IExpression, IProc {
 
   public EvalContext eval(Env env, IExpression... exprs) {
-    // TODO -- bounds check
+    if (exprs.length != 1)
+      throw new IllegalArgumentException("not");
     EvalContext ctx = exprs[0].eval(env, exprs);
     if (ctx.expr instanceof Bool)
       return new EvalContext(env, new Bool(!((Bool)ctx.expr).val));

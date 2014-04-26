@@ -3,7 +3,7 @@ package mtscheme.Expression.BuiltIns;
 import mtscheme.Env;
 import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
-import mtscheme.Expression.Null;
+import mtscheme.Expression.Nil;
 import mtscheme.Expression.Value.Bool;
 
 import java.util.Arrays;
@@ -29,7 +29,7 @@ public class If implements IExpression, IProc {
     if (it.hasNext())
       elseClause = it.next();
     else
-      elseClause = ((a, b) -> new EvalContext(env, new Null()));  // look how nice this replaced the anonymous class!
+      elseClause = ((a, b) -> new EvalContext(env, new Nil()));  // look how nice this replaced the anonymous class!
 
     EvalContext ctx = cond.eval(env);
     if (ctx.expr instanceof Bool) {

@@ -2,10 +2,10 @@ package mtscheme.Expression;
 
 import mtscheme.Env;
 
-public class Null implements IExpression {
+public class Nil implements IExpression {
 
   public boolean equals(Object object) {
-    return object instanceof Null;
+    return object instanceof Nil;
   }
 
   public EvalContext eval (Env env, IExpression... exprs) {

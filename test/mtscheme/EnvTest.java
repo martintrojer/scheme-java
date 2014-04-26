@@ -1,6 +1,6 @@
 package mtscheme;
 
-import mtscheme.Expression.Null;
+import mtscheme.Expression.Nil;
 import mtscheme.Expression.Value.Name;
 import mtscheme.Expression.Value.Num;
 import org.junit.Assert;
@@ -10,24 +10,24 @@ import java.math.BigDecimal;
 
 public class EnvTest {
 
-  Null nullExpr = new Null();
+  Nil nilExpr = new Nil();
   Num FortyTwo = new Num(BigDecimal.valueOf(42));
   Name Baz = new Name("baz");
 
-  Env simpleTestEnv = new Env().addEntry("foo", nullExpr);
+  Env simpleTestEnv = new Env().addEntry("foo", nilExpr);
   Env nestedTestEnv = simpleTestEnv.expand().addEntry("bar", Baz);
   Env shadowedTestEnv = nestedTestEnv.expand().addEntry("foo", FortyTwo);
 
   @Test
   public void testSimpleLookUp() throws Exception {
-    Assert.assertEquals(simpleTestEnv.lookUp("foo").get(), nullExpr);
+    Assert.assertEquals(simpleTestEnv.lookUp("foo").get(), nilExpr);
     Assert.assertFalse(simpleTestEnv.lookUp("bar").isPresent());
   }
 
   @Test
   public void testNestedLookup() throws Exception {
     Assert.assertEquals(nestedTestEnv.lookUp("bar").get(), Baz);
-    Assert.assertEquals(nestedTestEnv.lookUp("foo").get(), nullExpr);
+    Assert.assertEquals(nestedTestEnv.lookUp("foo").get(), nilExpr);
     Assert.assertFalse(simpleTestEnv.lookUp("baz").isPresent());
   }
 

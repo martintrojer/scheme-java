@@ -36,6 +36,6 @@ public class Cond implements IExpression, IProc {
       if (res.isPresent())
         return res.get();
     }
-    return new EvalContext(env, new Null());
+    return new EvalContext(env, new Nil());
   }
 }

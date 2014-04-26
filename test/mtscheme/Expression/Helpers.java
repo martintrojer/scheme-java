@@ -29,6 +29,13 @@ public class Helpers {
     EvalContext res =
             Parser.parse(Tokenizer.tokenize(expr))
                     .get(0).eval(GlobalEnv.globalEnv());
-    Assert.assertEquals(new Null(), res.expr);
+    Assert.assertEquals(new Nil(), res.expr);
+  }
+
+  public static void testEnv(String expr, String key, BigDecimal expect) {
+    EvalContext res =
+            Parser.parse(Tokenizer.tokenize(expr))
+                    .get(0).eval(GlobalEnv.globalEnv());
+    Assert.assertEquals(expect, ((Num)res.env.lookUp(key).get()).val);
   }
 }
