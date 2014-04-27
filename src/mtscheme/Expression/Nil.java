@@ -9,6 +9,6 @@ public class Nil implements IExpression {
   }
 
   public EvalContext eval (Env env, IExpression... exprs) {
-    throw new IllegalStateException("trying to eval Null");
+    return new EvalContext(env, new Nil());
   }
 }

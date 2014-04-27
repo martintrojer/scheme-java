@@ -2,6 +2,7 @@ package mtscheme.Parser;
 
 import mtscheme.Expression.Comb;
 import mtscheme.Expression.IExpression;
+import mtscheme.Expression.Nil;
 import org.pcollections.ConsPStack;
 import org.pcollections.PStack;
 import org.pcollections.PVector;
@@ -32,7 +33,10 @@ public class Parser {
       return new ParseContext(acc, ConsPStack.empty());
     else if (first instanceof TOpen) {
       ParseContext res = doParse(TreePVector.empty(), rest);
-      return doParse(acc.plus(new Comb(res.exprs)), res.toks);
+      if (res.exprs.isEmpty())
+        return doParse(acc.plus(new Nil()), res.toks);
+      else
+        return doParse(acc.plus(new Comb(res.exprs)), res.toks);
     }
     else if (first instanceof TClose)
       return new ParseContext(acc, rest);
