@@ -29,6 +29,7 @@ public class GlobalEnv {
             .addEntry("cond", new Cond())
             .addEntry("define", new Define())
 
+            .addEntry("cons", new Cons())
             .addEntry("list", new ListFn());
   }
 }

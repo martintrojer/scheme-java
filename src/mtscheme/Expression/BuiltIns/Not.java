@@ -5,9 +5,6 @@ import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
 import mtscheme.Expression.Value.Bool;
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 public class Not implements IExpression, IProc {
 
   public EvalContext eval(Env env, IExpression... exprs) {

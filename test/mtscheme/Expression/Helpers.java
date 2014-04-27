@@ -43,7 +43,7 @@ public class Helpers {
   public static void testList(String expr, List<IExpression> expect) {
     EvalContext res =
             Parser.parse(Tokenizer.tokenize(expr))
-            .get(0).eval(GlobalEnv.globalEnv());
+                    .get(0).eval(GlobalEnv.globalEnv());
     Assert.assertEquals(expect, ((ListExpr)res.expr).exprs);
   }
 }
