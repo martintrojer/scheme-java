@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class ListFnTest {
+public class ListAppendTest {
 
   @Test
   public void testList() throws Exception {
@@ -20,5 +20,17 @@ public class ListFnTest {
             new Num(BigDecimal.ONE),
             new ListExpr(Arrays.asList(new Num(BigDecimal.TEN), new Num(BigDecimal.TEN))),
             new Num(BigDecimal.ZERO)));
+  }
+
+  @Test
+  public void testAppend() throws Exception {
+    Helpers.testList("(append (list 1 10))", Arrays.asList(new Num(BigDecimal.ONE), new Num(BigDecimal.TEN)));
+    Helpers.testList("(append (list 1 2) (list 3 4))", Arrays.asList(
+            new Num(BigDecimal.ONE), new Num(BigDecimal.valueOf(2)),
+            new Num(BigDecimal.valueOf(3)), new Num(BigDecimal.valueOf(4))));
+    Helpers.testList("(append (list 1 (list 2)) 3)", Arrays.asList(
+            new Num(BigDecimal.ONE), new ListExpr(Arrays.asList(new Num(BigDecimal.valueOf(2)))),
+            new Num(BigDecimal.valueOf(3))));
+
   }
 }

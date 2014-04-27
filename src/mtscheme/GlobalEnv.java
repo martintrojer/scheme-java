@@ -30,6 +30,9 @@ public class GlobalEnv {
             .addEntry("define", new Define())
 
             .addEntry("cons", new Cons())
-            .addEntry("list", new ListFn());
+            .addEntry("list", new ListFn())
+            .addEntry("append", new Append())
+            .addEntry("car", new Car())
+            .addEntry("cdr", new Cdr());
   }
 }
