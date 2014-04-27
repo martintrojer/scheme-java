@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AritFun implements IExpression, IProc {
+public class AritFun implements IExpression {
 
   // functional interface, to hold a reference to the lambda
   public interface AritFn {

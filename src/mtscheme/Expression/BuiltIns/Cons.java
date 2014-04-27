@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cons implements IExpression, IProc {
+public class Cons implements IExpression {
 
   public EvalContext eval(Env env, IExpression... exprs) {
     if (exprs.length != 2)

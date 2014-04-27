@@ -5,7 +5,7 @@ import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
 import mtscheme.Expression.Value.Bool;
 
-public class Not implements IExpression, IProc {
+public class Not implements IExpression {
 
   public EvalContext eval(Env env, IExpression... exprs) {
     if (exprs.length != 1)

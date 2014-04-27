@@ -1,7 +1,6 @@
 package mtscheme.Expression;
 
 import mtscheme.Env;
-import mtscheme.Expression.BuiltIns.IProc;
 import org.pcollections.ConsPStack;
 import org.pcollections.PStack;
 
@@ -25,9 +24,6 @@ public class Comb implements IExpression {
     IExpression head = this.exprs.get(0);
     List<IExpression> rest = this.exprs.minus(0);
     EvalContext headCtx = head.eval(env);
-    if (headCtx.expr instanceof IProc)
-      return headCtx.expr.eval(env, rest.toArray(new IExpression[rest.size()]));
-    else
-      return headCtx;
+    return headCtx.expr.eval(env, rest.toArray(new IExpression[rest.size()]));
   }
 }

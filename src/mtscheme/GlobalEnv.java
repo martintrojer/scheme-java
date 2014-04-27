@@ -15,11 +15,11 @@ public class GlobalEnv {
             .addEntry("*", new AritFun(BigDecimal::multiply))
             .addEntry("/", new AritFun((a,b) -> a.divide(b, RoundingMode.HALF_UP)))
 
-            .addEntry("=",  new CompFun((a, b) -> a.equals(b)))
-            .addEntry(">",  new CompFun((a, b) -> ((Num) a).gt((Num) b)))
-            .addEntry(">=", new CompFun((a, b) -> ((Num) a).ge((Num) b)))
-            .addEntry("<",  new CompFun((a, b) -> ((Num) a).lt((Num) b)))
-            .addEntry("<=", new CompFun((a, b) -> ((Num) a).le((Num) b)))
+            .addEntry("=",  new CompFn((a, b) -> a.equals(b)))
+            .addEntry(">",  new CompFn((a, b) -> ((Num) a).gt((Num) b)))
+            .addEntry(">=", new CompFn((a, b) -> ((Num) a).ge((Num) b)))
+            .addEntry("<",  new CompFn((a, b) -> ((Num) a).lt((Num) b)))
+            .addEntry("<=", new CompFn((a, b) -> ((Num) a).le((Num) b)))
 
             .addEntry("true", new Bool(true))
             .addEntry("false", new Bool(false))
@@ -33,6 +33,11 @@ public class GlobalEnv {
             .addEntry("list", new ListFn())
             .addEntry("append", new Append())
             .addEntry("car", new Car())
-            .addEntry("cdr", new Cdr());
+            .addEntry("cdr", new Cdr())
+            .addEntry("null?", new Null())
+
+            .addEntry("let", new Let())
+            .addEntry("begin", new Begin())
+            .addEntry("lambda", new Lambda());
   }
 }

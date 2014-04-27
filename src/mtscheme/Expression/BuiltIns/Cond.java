@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Optional;
 
-public class Cond implements IExpression, IProc {
+public class Cond implements IExpression {
 
   private Optional<EvalContext> doExpr(Env env, Comb comb) {
     if (comb.exprs.size() != 2)

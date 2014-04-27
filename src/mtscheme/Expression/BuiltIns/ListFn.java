@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ListFn implements IExpression, IProc {
+public class ListFn implements IExpression {
 
   public EvalContext eval(Env env, IExpression... exprs) {
     List<IExpression> contents =

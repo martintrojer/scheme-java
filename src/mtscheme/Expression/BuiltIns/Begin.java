@@ -2,12 +2,13 @@ package mtscheme.Expression.BuiltIns;
 
 import mtscheme.Env;
 import mtscheme.Expression.EvalContext;
+import mtscheme.Expression.Helpers;
 import mtscheme.Expression.IExpression;
-import mtscheme.Expression.ListExpr;
 
-public class Car implements IExpression {
+import java.util.Arrays;
+
+public class Begin implements IExpression {
   public EvalContext eval(Env env, IExpression... exprs) {
-    EvalContext res = exprs[0].eval(env);
-    return new EvalContext(env, ((ListExpr)res.expr).exprs.get(0));
+    return Helpers.evalAll(env, Arrays.asList(exprs));
   }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class Append implements IExpression, IProc {
+public class Append implements IExpression {
   public EvalContext eval(Env env, IExpression... exprs) {
     Iterator<IExpression> it = Arrays.asList(exprs).iterator();
     ArrayList<IExpression> resExprs = new ArrayList<>();

@@ -9,7 +9,7 @@ import mtscheme.Expression.Value.Bool;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class If implements IExpression, IProc {
+public class If implements IExpression {
 
   public EvalContext eval(Env env, IExpression... exprs) {
     Iterator<IExpression> it = Arrays.asList(exprs).iterator();

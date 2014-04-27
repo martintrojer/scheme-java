@@ -4,10 +4,16 @@ import mtscheme.Env;
 import mtscheme.Expression.EvalContext;
 import mtscheme.Expression.IExpression;
 import mtscheme.Expression.ListExpr;
+import mtscheme.Expression.Value.Bool;
 
-public class Car implements IExpression {
+import java.util.Arrays;
+
+public class Null implements IExpression {
   public EvalContext eval(Env env, IExpression... exprs) {
     EvalContext res = exprs[0].eval(env);
-    return new EvalContext(env, ((ListExpr)res.expr).exprs.get(0));
+    if (res.expr.equals(new ListExpr(Arrays.asList())))
+      return new EvalContext(env, new Bool(true));
+    else
+      return new EvalContext(env, new Bool(false));
   }
 }

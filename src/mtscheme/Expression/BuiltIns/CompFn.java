@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CompFun implements IExpression, IProc {
+public class CompFn implements IExpression {
 
   public interface CmpFn {
     boolean invoke(Value a, Value b);
@@ -18,7 +18,7 @@ public class CompFun implements IExpression, IProc {
 
   private CmpFn fn;
 
-  public CompFun(CmpFn fn) {
+  public CompFn(CmpFn fn) {
     this.fn = fn;
   }
 
