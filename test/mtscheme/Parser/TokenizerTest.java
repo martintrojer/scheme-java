@@ -12,6 +12,7 @@ public class TokenizerTest {
     Assert.assertEquals(Tokenizer.tokenize("()"), Arrays.asList(new TOpen(), new TClose()));
     Assert.assertEquals(Tokenizer.tokenize("(kalle)"), Arrays.asList(new TOpen(), new TSymbol("kalle"), new TClose()));
     Assert.assertEquals(Tokenizer.tokenize("\"kalle\""), Arrays.asList(new TString("kalle")));
+    Assert.assertEquals(Tokenizer.tokenize("\"kalle olle\""), Arrays.asList(new TString("kalle olle")));
     Assert.assertEquals(Tokenizer.tokenize("\"(kalle)\""), Arrays.asList(new TString("(kalle)")));
     Assert.assertEquals(Tokenizer.tokenize("\"kalle\" \"olle\""),
             Arrays.asList(new TString("kalle"), new TString("olle")));

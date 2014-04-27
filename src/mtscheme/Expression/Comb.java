@@ -14,6 +14,7 @@ public class Comb implements IExpression {
     this.exprs = ConsPStack.from(exprs);
   }
 
+  @Override
   public boolean equals(Object object) {
     return object instanceof Comb && ((Comb)object).exprs.equals(exprs);
   }

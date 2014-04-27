@@ -4,8 +4,7 @@ import mtscheme.Env;
 import mtscheme.Expression.Value.Bool;
 import mtscheme.Expression.Value.Num;
 import mtscheme.GlobalEnv;
-import mtscheme.Parser.Parser;
-import mtscheme.Parser.Tokenizer;
+import mtscheme.Repl;
 import org.junit.Assert;
 
 import java.math.BigDecimal;
@@ -17,7 +16,7 @@ public class TestHelpers {
     Env evalEnv = GlobalEnv.globalEnv();
     if (env.length > 0)
       evalEnv = env[0];
-    return Parser.parse(Tokenizer.tokenize(expr)).get(0).eval(evalEnv);
+    return Repl.readAndEvalFirstForm(expr, evalEnv);
   }
 
   public static void testNumber(String expr, BigDecimal expect, Env... env) {

@@ -11,6 +11,7 @@ public class Symbol implements IExpression {
     this.name = name;
   }
 
+  @Override
   public boolean equals(Object object) {
     return object instanceof Symbol && ((Symbol)object).name.equals(name);
   }

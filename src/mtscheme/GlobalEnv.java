@@ -38,6 +38,9 @@ public class GlobalEnv {
 
             .addEntry("let", new Let())
             .addEntry("begin", new Begin())
-            .addEntry("lambda", new Lambda());
+            .addEntry("lambda", new Lambda())
+
+            .addEntry("display", new Display())
+            .addEntry("newline", new Newline());
   }
 }
