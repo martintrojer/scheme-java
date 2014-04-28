@@ -29,7 +29,7 @@ public class DefineFunctionTest {
   }
 
   @Test
-  public void lambdaTest() {
+  public void testLambda() {
     Env env1 = TestHelpers.getEnv("(define (adder val) (lambda (x) (+ x val)))");
     Env env2 = TestHelpers.getEnv("(define add4 (adder 4))", env1);
     TestHelpers.testNumber("(add4 4)", BigDecimal.valueOf(8), env2);
@@ -38,5 +38,11 @@ public class DefineFunctionTest {
     TestHelpers.testList("(map (lambda (x) (* x x)) (list 1 2 3))",
             Arrays.asList(new Num(BigDecimal.ONE), new Num(BigDecimal.valueOf(4)), new Num(BigDecimal.valueOf(9))),
             env3);
+  }
+
+  @Test
+  public void testClosure() throws Exception {
+    Env env = TestHelpers.getEnv("(define add2 (let ((a 2)) (lambda (x) (+ x a))))");
+    TestHelpers.testNumber("(add2 2)", BigDecimal.valueOf(4), env);
   }
 }

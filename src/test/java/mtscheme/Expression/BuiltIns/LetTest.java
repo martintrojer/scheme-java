@@ -11,6 +11,7 @@ public class LetTest {
   public void testLet() throws Exception {
     TestHelpers.testNumber("(let ((a 1)) a)", BigDecimal.ONE);
     TestHelpers.testNumber("(let ((a 1) (b (+ 1 1))) (+ a b))", BigDecimal.valueOf(3));
+    TestHelpers.testNumber("(let ((a 1)) (let ((b 2)) (+ a b)))", BigDecimal.valueOf(3));
   }
 
   @Test
